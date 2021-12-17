@@ -4,9 +4,43 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
+        xmlns:viewmodels ="clr-namespace:Test.ViewModels"
+        xmlns:views ="clr-namespace:Test.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:mainViewModel}">
+            <views:main DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="detailViewTemplate" DataType="{x:Type viewmodels:detailViewModel}">
+            <views:detail DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="new_partyViewTemplate" DataType="{x:Type viewmodels:new_partyViewModel}">
+            <views:new_party DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Background="#cec2ae">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock>Welcome</TextBlock>
+        </DockPanel>
+        <DockPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Height="110" Width="179">
+                <Button Content="Create a new party" Click="new_party_clicked" Margin="10"/>
+                <Button Content="Select an existing party" Click="main_clicked" Margin="10"/>
+            </StackPanel>
+        </DockPanel>
+
+        
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Content="{Binding}"/>
     </Grid>
 </Window>

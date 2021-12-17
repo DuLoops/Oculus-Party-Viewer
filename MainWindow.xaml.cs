@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test.ViewModels;
 
 namespace Test
 {
@@ -24,6 +25,18 @@ namespace Test
         {
             InitializeComponent();
             //testing
+        }
+
+        private void new_party_clicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new new_partyViewModel();
+        }
+
+
+        private void main_clicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new mainViewModel();
+
         }
     }
 }
