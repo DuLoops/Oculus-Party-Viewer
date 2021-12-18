@@ -32,8 +32,15 @@ namespace Test.Views
 
         private void createPlayerCard(Player_Character pc)
         {
-            System.Windows.Controls.ScrollViewer sc_viwer = new ScrollViewer();
-            sc_viwer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            System.Windows.Controls.StackPanel playerCard = new StackPanel();
+
+            System.Windows.Controls.TextBox name = new TextBox();
+            name.Text = pc.Name;
+            System.Windows.Controls.TextBox hp = new TextBox();
+            hp.Text = "HP";
+            System.Windows.Controls.ProgressBar pBar = new ProgressBar();
+            pBar.Value = pc.HitPoints;
+
             System.Windows.Controls.StackPanel armorClass = createStackPanel("Armor Class", pc.ArmorClass);
             System.Windows.Controls.StackPanel thb = createStackPanel("To-Hit Bonus", pc.ToHit);
             System.Windows.Controls.StackPanel avgDmg = createStackPanel("Average Damage", pc.AverageDamage);
@@ -46,8 +53,20 @@ namespace Test.Views
             System.Windows.Controls.StackPanel chr_sv = createStackPanel("Charisma Save", pc.Saves[5]);
             System.Windows.Controls.StackPanel avd = createStackPanel("Avoidance", pc.Avoidance);
 
-
-            mainPanel.Children.Add(sc_viwer);
+            playerCard.Children.Add(name);
+            playerCard.Children.Add(hp);
+            playerCard.Children.Add(pBar);
+            playerCard.Children.Add(armorClass);
+            playerCard.Children.Add(thb);
+            playerCard.Children.Add(avgDmg);
+            playerCard.Children.Add(avgHeal);
+            playerCard.Children.Add(str_sv);
+            playerCard.Children.Add(dex_sv);
+            playerCard.Children.Add(cst_sv);
+            playerCard.Children.Add(int_sv);
+            playerCard.Children.Add(wis_sv);
+            playerCard.Children.Add(chr_sv);
+            playerCard.Children.Add(avd);
             
         }
 
