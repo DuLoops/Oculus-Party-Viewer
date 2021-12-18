@@ -36,29 +36,29 @@ namespace Test
         //Array of all the saves in order of the Stats enum
         public List<int> Saves { get; private set; }
 
-        public int ToHit { get; private set; }
+        public int ToHit { get; protected set; }
 
         //Average of damage dice, for casters takes average damage of highest, most numerous spell slot.
-        public float AverageDamage { get; private set; }
+        public float AverageDamage { get; protected set; }
 
         //Flat damage bonuses
-        public float FlatDamage { get; private set; }
+        public float FlatDamage { get; protected set; }
 
         //Healing over 5 rounds
-        public int AverageHealing { get; private set; }
+        public float AverageHealing { get; protected set; }
 
-        public int HitPoints { get; private set; }
+        public int HitPoints { get; protected set; }
 
         //Average AC over the course of a fight, ignores 1 round buffs (i.e. Shield)
-        public int ArmorClass { get; private set; }
+        public int ArmorClass { get; protected set; }
 
-        public bool UsesSaves { get; private set; }
+        public bool UsesSaves { get; protected set; }
 
-        public bool HalfDamage { get; private set; }
+        public bool HalfDamage { get; protected set; }
 
-        public Stats PrimarySave { get; private set; }
+        public Stats PrimarySave { get; protected set; }
 
-        public int SaveDC { get; private set; }
+        public int SaveDC { get; protected set; }
 
         public Creature()
         {
@@ -67,8 +67,8 @@ namespace Test
             Saves = new List<int>(6);
             for (int i = 0; i < 6; i++)
             {
-                Stats[i] = 0;
-                Saves[i] = 0;
+                Stats.Add(0);
+                Saves.Add(0);
             }
             ToHit = 0;
             AverageDamage = 0;
@@ -224,6 +224,27 @@ namespace Test
                 }
             }
             return DPR;
+        }
+
+        override public string ToString() 
+        {
+            string output = "";
+            output += "HP: " + HitPoints + "\n";
+            output += "Armor Class: " + ArmorClass + "\n";
+            for (int i = 0; i < 6; i++)
+            {
+                output += (Stats)i + ": " + Stats[i] + "\t\t";
+                output += (Stats)i + " Save: " + Saves[i] + "\n";
+            }
+            output += "To-Hit: " + ToHit + "\n";
+            output += "Average Damage: " + AverageDamage + "\n";
+            output += "Flat Damage: " + FlatDamage + "\n";
+            output += "Average Healing: " + AverageHealing + "\n";
+            output += "Primary Save: " + PrimarySave + "\n";
+            output += "Save DC: " + SaveDC + "\n";
+            output += "Uses Saves: " + UsesSaves + "\n";
+            output += "Half Damage: " + HalfDamage + "\n";
+            return output;
         }
     }
 }

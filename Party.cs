@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace Test
 {
     class Party
     {
-        private const int MAX_PARTY_SIZE = 5;
+        private int PartySize = 1;
 
         public List<Player_Character> Members { get; private set; }
 
@@ -28,10 +30,34 @@ namespace Test
 
         public Party()
         {
-            Members = new List<Player_Character>(MAX_PARTY_SIZE);
-            for (int i = 0; i < MAX_PARTY_SIZE; i++)
+            Members = new List<Player_Character>(PartySize);
+            for (int i = 0; i < PartySize; i++)
             {
                 Members[i] = new Player_Character();
+            }
+            Update();
+        }
+
+        public Party(string FilePath)
+        {
+            Members = new List<Player_Character>();
+            AverageSaves = new List<float>();
+            XmlReader PartyReader = XmlReader.Create(FilePath);
+            while (PartyReader.Read())
+            {
+                switch (PartyReader.NodeType)
+                {
+                    case XmlNodeType.Element:
+                        if (PartyReader.Name == "Party")
+                        {
+                            break;
+                        }
+                        Player_Character player = new Player_Character(PartyReader);
+                        Members.Add(player);
+                        break;
+                    default:
+                        break;
+                }
             }
             Update();
         }
@@ -64,7 +90,7 @@ namespace Test
                 {
                     total += player.Saves[i];
                 }
-                AverageSaves[i] = total / Members.Count;
+                AverageSaves.Add(total / Members.Count);
             }
 
             Level = Members[0].Level;
@@ -110,6 +136,38 @@ namespace Test
                 total += player.Avoidance * AverageHP;
             }
             EffectiveHitPoints = BaseHitPoints + HealingPerRound - total;
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            foreach (Player_Character player in Members)
+            {
+                output += player.ToString() + "\n\n";
+            }
+            return output;
+        }
+
+        public void Save()
+        {
+            SaveFileDialog SaveDialog = new SaveFileDialog()
+            {
+                DefaultExt = ".xml",
+                Filter = "Party Viewer XML|*.xml|All files (*.*)|*.*"
+            };
+            if (SaveDialog.ShowDialog() == true)
+            {
+                XmlWriter PartySaver = XmlWriter.Create(SaveDialog.FileName);
+                PartySaver.WriteStartDocument();
+                PartySaver.WriteStartElement("Party");
+                foreach (Player_Character player in Members)
+                {
+                    player.Save(PartySaver);
+                }
+                PartySaver.WriteEndElement();
+                PartySaver.WriteEndDocument();
+                PartySaver.Close();
+            } 
         }
     }
 }

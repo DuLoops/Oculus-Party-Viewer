@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Party CurrentParty;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,8 +37,17 @@ namespace Test
 
         private void main_clicked(object sender, RoutedEventArgs e)
         {
-            DataContext = new mainViewModel();
+            OpenFileDialog PartyFile = new OpenFileDialog
+            {
+                Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*"
+            };
 
+            // Returns true when a file is opened. Return if not opened.
+            if (PartyFile.ShowDialog() != true) return;
+
+            CurrentParty = new Party(PartyFile.FileName);
+            CurrentParty.Save();
+            DataContext = new mainViewModel();
         }
     }
 }
