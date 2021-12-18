@@ -4,19 +4,63 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Test.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="633" Width="1080">
     <Grid Background="#cec2ae">
-        <ToolBarTray DockPanel.Dock="Top" Margin="0,0,0,412" Background="#264c5e">
+        <ToolBarTray DockPanel.Dock="Top" Background="#264c5e" Margin="0" Height="40" VerticalAlignment="Top" >
             <ToolBar>
                 <Button Content="Edit" FontSize="15" Margin="0,0,5, 0" BorderBrush="Gray" Padding="5"/>
                 <Button Content="Parties" FontSize="15"  BorderBrush="Gray" Padding="5" />
             </ToolBar>
         </ToolBarTray>
-        <StackPanel Orientation="Horizontal" Margin="10,53,10,10" >
-            <Rectangle Width="150" Fill="#7FA34C50">
-                
-            </Rectangle>
-        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,250">
+            <StackPanel x:Name="mainPanel" Orientation="Horizontal" Margin="10,53,10,10" >
+                <StackPanel x:Name="player_card" Orientation="Vertical" Width="150" Background="#7FA34C50" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="2"/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <TextBox Text="Player1" Background="{x:Null}" FontSize="15" Margin="5"/>
+                    <TextBox Text="HP" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    <ProgressBar Background="#FFD1D1D1" Height="20" Width="130" Foreground="#FFE8443C" Value="30"/>
+
+                    <StackPanel x:Name="armorClass" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="Armor Class" Margin="5" />
+                        <TextBox x:Name="armorClass_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="thb" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="To-Hit Bonus" Margin="5" />
+                        <TextBox x:Name="thb_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="avg_dmg" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="Average Damage" Margin="5" />
+                        <TextBox x:Name="avg_dmg_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="avg_h" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="Average Healing" Margin="5" />
+                        <TextBox x:Name="avg_h_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="str_sv" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="Strenght Save" Margin="5" />
+                        <TextBox x:Name="str_sv_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="dex_sv" MinHeight="40" Margin="10" Background="#FFCEC2AE">
+                        <RadioButton Content="Dexterity Save" Margin="5" />
+                        <TextBox x:Name="dex_sv_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>
