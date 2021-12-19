@@ -14,6 +14,8 @@ namespace Test
 
         public List<float> AverageSaves { get; private set; }
 
+        public string name { get; set; }
+
         public int Level { get; private set; }
 
         public int AverageArmorClass { get; private set; }
@@ -30,12 +32,8 @@ namespace Test
 
         public Party()
         {
-            Members = new List<Player_Character>(PartySize);
-            for (int i = 0; i < PartySize; i++)
-            {
-                Members[i] = new Player_Character();
-            }
-            Update();
+            Members = new List<Player_Character>();
+            AverageSaves = new List<float>();
         }
 
         public Party(string FilePath)
@@ -150,6 +148,7 @@ namespace Test
 
         public void Save()
         {
+            Update();
             SaveFileDialog SaveDialog = new SaveFileDialog()
             {
                 DefaultExt = ".xml",
@@ -168,11 +167,6 @@ namespace Test
                 PartySaver.WriteEndDocument();
                 PartySaver.Close();
             } 
-        }
-
-        public void AddPlayer(string Name)
-        {
-            Members.Add(new Player_Character(Name));
         }
     }
 }

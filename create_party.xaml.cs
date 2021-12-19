@@ -29,27 +29,22 @@ namespace Test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             names.Add(playerName.Text);
             playerName.Text = "";
             nameList.ItemsSource = new List<Object>();
             nameList.ItemsSource = names;
-            //displayPlayers();
         }
 
         private void start_btn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void displayPlayers()
-        {
-
-            foreach (string name in names) {
-                System.Diagnostics.Trace.WriteLine(name);
+            Party party = new Party();
+            party.name = partyName.Text;
+            foreach (string name in names)
+            {
+                party.Members.Add(new Player_Character(name));
             }
+            party.Save();
+            this.Close();
         }
-
-       
     }
 }

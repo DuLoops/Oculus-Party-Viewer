@@ -31,9 +31,10 @@ namespace Test.Views
         public main(Party party)
         {
             currentParty = party;
-            InitializeComponent();
+            InitializeComponent(); 
             createParty();
-
+            partyName.Text = party.name;
+            System.Diagnostics.Trace.WriteLine(party.name);
         }
 
         private void createParty()
@@ -89,7 +90,6 @@ namespace Test.Views
             ScrollView.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
             ScrollView.Content = playerCard;
             mainPlayerPanel.Children.Add(ScrollView);
-            Trace.WriteLine("player created");
 
         }
 
@@ -184,7 +184,6 @@ namespace Test.Views
                 case "Avoidance":
                     pc.Avoidance = value;
                     break;
-
             }
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
