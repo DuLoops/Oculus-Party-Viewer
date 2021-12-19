@@ -33,7 +33,7 @@ namespace Test
         private void new_party_clicked(object sender, RoutedEventArgs e)
         {
             
-            DataContext = new ViewModels.new_partyViewModel();
+            DataContext = new new_partyViewModel();
 
         }
 
@@ -49,7 +49,6 @@ namespace Test
             if (PartyFile.ShowDialog() != true) return;
 
             CurrentParty = new Party(PartyFile.FileName);
-            CurrentParty.Save();
             DataContext = new main(CurrentParty);
 
         }

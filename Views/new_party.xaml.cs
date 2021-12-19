@@ -27,7 +27,7 @@ namespace Test.Views
 
         private void start_btn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new mainViewModel();
+            DataContext = new main();
 
         }
 

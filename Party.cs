@@ -169,5 +169,10 @@ namespace Test
                 PartySaver.Close();
             } 
         }
+
+        public void AddPlayer(string Name)
+        {
+            Members.Add(new Player_Character(Name));
+        }
     }
 }
