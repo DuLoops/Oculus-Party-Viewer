@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="monster" Height="450" Width="800">
+        Closing="DataWindow_Closing"  
+        Title="Battle Field" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Views/dragon.jpg"/>
         </Grid.Background>
-        <TextBox  x:Name="bossText" HorizontalAlignment="Left" Height="301" Margin="511,111,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Background="#FFCEC2AE" FontSize="18"/>
+        <TextBox  x:Name="bossText" HorizontalAlignment="Left" Height="301" Margin="502,106,0 ,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Background="#FFCEC2AE" FontSize="18"/>
 
     </Grid>
 </Window>

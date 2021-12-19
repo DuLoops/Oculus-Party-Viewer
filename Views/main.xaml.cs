@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using Microsoft.Win32;
 using Test.Views;
+using NAudio.Wave;
 
 namespace Test.Views
 {
@@ -24,18 +25,25 @@ namespace Test.Views
 
     public partial class main : UserControl
     {
+
+        WaveOut waveOut;
+        bool mute = false;
+
         public Party currentParty;
         public main()
         {
             InitializeComponent();
         }
-        public main(Party party)
+
+
+
+        public main(Party party, WaveOut _waveout)
         {
             currentParty = party;
             InitializeComponent(); 
             createParty();
             partyName.Text = party.name;
-            System.Diagnostics.Trace.WriteLine(party.name);
+            waveOut = _waveout;
         }
 
         private void createParty()
@@ -206,9 +214,28 @@ namespace Test.Views
             createParty();
         }
 
+        private void mute_Click(object sender, RoutedEventArgs e)
+        {
+            if (mute)
+            {
+                waveOut.Resume();
+                mute = false;
+                mute_btn.Content = "Mute";
+
+            }
+            else
+            {
+                waveOut.Pause();
+                mute = true;
+                mute_btn.Content = "Unmute";
+            }
+            
+
+        }
         private void raid_Click(object sender, RoutedEventArgs e)
         {
-            monster monsterWindow = new monster(currentParty);
+            
+            monster monsterWindow = new monster(currentParty, mute);
             monsterWindow.Show();
 
         }

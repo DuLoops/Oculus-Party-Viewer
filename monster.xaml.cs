@@ -9,6 +9,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+using System.IO;
+using NAudio.Wave;
+using System.ComponentModel;
 
 namespace Test
 {
@@ -20,13 +24,21 @@ namespace Test
         public monster()
         {
             InitializeComponent();
+
         }
 
-        public monster(Party Adventurers)
+        Mp3FileReader reader = new Mp3FileReader("../../../music/battleThemeA.mp3");
+        WaveOut waveOut = new WaveOut(); // or WaveOutEvent()
+
+        public monster(Party Adventurers, bool mute)
         {
             InitializeComponent();
             Creature Boss = new Creature(Adventurers);
             DisplayBoss(Boss);
+            if (!mute) {
+                waveOut.Init(reader);
+                waveOut.Play();
+            }
         }
 
         private void DisplayBoss(Creature Boss)
@@ -60,7 +72,13 @@ namespace Test
             }
             bossText.Text = bossInfo;
             
-        }   
+        }
+
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {   
+            waveOut.Stop();
+
+        }
     }       
 }           
             
