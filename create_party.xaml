@@ -24,6 +24,6 @@
             <ListBox Name="nameList" Height="217" />
 
         </StackPanel>
-        <Button x:Name="start_btn" FontSize="20" Content="Start" HorizontalAlignment="Left" Margin="638,31,0,0" VerticalAlignment="Top" Width="102" Background="#264c5e" Click="start_btn_Click"/>
+        <Button x:Name="start_btn" FontSize="20" Content="Save" HorizontalAlignment="Left" Margin="638,31,0,0" VerticalAlignment="Top" Width="102" Background="#264c5e" Click="start_btn_Click"/>
     </Grid>
 </Window>
