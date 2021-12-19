@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test.Views;
+using Test.ViewModels;
 
 namespace Test.Views
 {
@@ -23,5 +25,16 @@ namespace Test.Views
             InitializeComponent();
         }
 
+        private void start_btn_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new mainViewModel();
+
+        }
+
+        private void back_btn_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new Test.MainWindow();
+            System.Diagnostics.Trace.WriteLine("sfhdl");
+        }
     }
 }

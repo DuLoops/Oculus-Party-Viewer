@@ -7,7 +7,8 @@
         xmlns:viewmodels ="clr-namespace:Test.ViewModels"
         xmlns:views ="clr-namespace:Test.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600">
+        Title="MainWindow" Height="900" Width="1600"
+        FontSize="30">
     <Window.Resources>
         <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:mainViewModel}">
             <views:main DataContext="{Binding}"/>

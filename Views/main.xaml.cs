@@ -27,6 +27,8 @@ namespace Test.Views
 
         Party currentParty;
 
+        
+
         public main()
         {
             InitializeComponent();
@@ -44,7 +46,6 @@ namespace Test.Views
             foreach (Player_Character pc in currentParty.Members)
             {
                 createPlayerCard(pc);
-
             }
         }
 
@@ -54,10 +55,22 @@ namespace Test.Views
 
             System.Windows.Controls.TextBox name = new TextBox();
             name.Text = pc.Name;
+            name.Background = Brushes.Transparent;
+            name.BorderBrush = Brushes.Transparent;
+            name.IsReadOnly = true;
+
             System.Windows.Controls.TextBox hp = new TextBox();
-            hp.Text = "HP";
+            string hpText = "HP: " + pc.HitPoints;
+            hp.Text = hpText;
+            hp.Background = Brushes.Transparent;
+            hp.BorderBrush = Brushes.Transparent;
+
             System.Windows.Controls.ProgressBar pBar = new ProgressBar();
             pBar.Value = pc.HitPoints;
+            pBar.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFE8443C");
+            pBar.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFD1D1D1");
+            pBar.Height = 30;
+
 
             System.Windows.Controls.StackPanel armorClass = createStackPanel("Armor Class", pc.ArmorClass);
             System.Windows.Controls.StackPanel thb = createStackPanel("To-Hit Bonus", pc.ToHit);
@@ -85,7 +98,9 @@ namespace Test.Views
             playerCard.Children.Add(wis_sv);
             playerCard.Children.Add(chr_sv);
             playerCard.Children.Add(avd);
-            
+            playerCard.Width = 300;
+            playerCard.Margin = new Thickness(20, 30, 20, 50);
+            playerCard.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#7FA34C50");
             this.mainPlayerPanel.Children.Add(playerCard);
             Trace.WriteLine("player created");
 
@@ -98,10 +113,22 @@ namespace Test.Views
             rb.Content = content;
             System.Windows.Controls.TextBox tb = new TextBox();
             tb.Text = value.ToString();
+            tb.Background = Brushes.Transparent;
+            tb.BorderBrush = Brushes.Transparent;
+            tb.TextAlignment = TextAlignment.Center;
+            tb.TextChanged += TextBox_TextChanged;
             sp.Children.Add(rb);
             sp.Children.Add(tb);
+            sp.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCEC2AE");
+            sp.Margin = new Thickness(15);
+            
             return sp;
 
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Trace.WriteLine(sender.GetType());
         }
     }
     

@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Test.Views"
+             xmlns:local="clr-namespace:Test.Views"        
+             xmlns:viewmodels ="clr-namespace:Test.ViewModels"
+             xmlns:views ="clr-namespace:Test.Views"
+             
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1600">
+    
     <Grid Background="#cec2ae">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -30,7 +34,7 @@
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" Height="577"  VerticalAlignment="Center"  Background="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}" Width="413">
             <TextBlock TextWrapping="Wrap" FontSize="40"><Run Language="en-ca" Text="Players"/></TextBlock>
         </StackPanel>
-        <Button x:Name="back_btn" FontSize="30" Content="Back" HorizontalAlignment="Left"  Margin="60,21,0,0" VerticalAlignment="Top" Width="102" Background="#264c5e" />
-        <Button x:Name="start_btn" FontSize="30" Content="Start" HorizontalAlignment="Left" Margin="668,26,0,0" VerticalAlignment="Top" Width="102" Grid.Column="1" Background="#264c5e"/>
+        <Button x:Name="back_btn" FontSize="30" Content="Back" HorizontalAlignment="Left"  Margin="60,21,0,0" VerticalAlignment="Top" Width="102" Background="#264c5e" Click="back_btn_Click" />
+        <Button x:Name="start_btn" FontSize="30" Content="Start" HorizontalAlignment="Left" Margin="668,26,0,0" VerticalAlignment="Top" Width="102" Grid.Column="1" Background="#264c5e" Click="start_btn_Click"/>
     </Grid>
 </UserControl>

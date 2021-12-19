@@ -5,62 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Test.Views"
              mc:Ignorable="d" Height="900" Width="1600">
+    
     <Grid Background="#cec2ae">
         <ToolBarTray DockPanel.Dock="Top" Background="#264c5e" VerticalAlignment="Top" >
-            <ToolBar>
-                <Button Content="Edit" FontSize="30" Margin="0,0,5, 0" BorderBrush="Gray" Padding="5"/>
+            <ToolBar Margin="10">
+                <Button Content="Save" FontSize="30" Margin="0,0,5, 0" BorderBrush="Gray" Padding="5"/>
                 <Button Content="Parties" FontSize="30"  BorderBrush="Gray" Padding="5" />
             </ToolBar>
         </ToolBarTray>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,10">
             <StackPanel Name="mainPlayerPanel" Orientation="Horizontal" Margin="10,53,10,10" >
-                <StackPanel x:Name="player_card" Orientation="Vertical" Width="150" Background="#7FA34C50" RenderTransformOrigin="0.5,0.5">
-                    <StackPanel.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform X="2"/>
-                        </TransformGroup>
-                    </StackPanel.RenderTransform>
-                    <TextBox Text="Player1" Background="{x:Null}" FontSize="15" Margin="5"/>
-                    <TextBox Text="HP" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    <ProgressBar Background="#FFD1D1D1" Height="20" Width="130" Foreground="#FFE8443C" Value="30"/>
 
-                    <StackPanel x:Name="armorClass" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="Armor Class" Margin="5" />
-                        <TextBox x:Name="armorClass_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel x:Name="thb" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="To-Hit Bonus" Margin="5" />
-                        <TextBox x:Name="thb_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel x:Name="avg_dmg" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="Average Damage" Margin="5" />
-                        <TextBox x:Name="avg_dmg_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel x:Name="avg_h" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="Average Healing" Margin="5" />
-                        <TextBox x:Name="avg_h_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel x:Name="str_sv" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="Strenght Save" Margin="5" />
-                        <TextBox x:Name="str_sv_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel x:Name="dex_sv" MinHeight="40" Margin="10" Background="#FFCEC2AE">
-                        <RadioButton Content="Dexterity Save" Margin="5" />
-                        <TextBox x:Name="dex_sv_tb" Text="5" Background="{x:Null}" BorderBrush="{x:Null}" TextAlignment="Center"/>
-                    </StackPanel>
-
-
-                </StackPanel>
             </StackPanel>
         </ScrollViewer>
 
     </Grid>
+    
 </UserControl>
