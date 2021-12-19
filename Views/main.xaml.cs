@@ -52,6 +52,7 @@ namespace Test.Views
         private void createPlayerCard(Player_Character pc)
         {
             System.Windows.Controls.StackPanel playerCard = new StackPanel();
+            playerCard.Name = pc.Name;
 
             System.Windows.Controls.TextBox name = new TextBox();
             name.Text = pc.Name;
@@ -59,34 +60,21 @@ namespace Test.Views
             name.BorderBrush = Brushes.Transparent;
             name.IsReadOnly = true;
 
-            System.Windows.Controls.TextBox hp = new TextBox();
-            string hpText = "HP: " + pc.HitPoints;
-            hp.Text = hpText;
-            hp.Background = Brushes.Transparent;
-            hp.BorderBrush = Brushes.Transparent;
-
-            System.Windows.Controls.ProgressBar pBar = new ProgressBar();
-            pBar.Value = pc.HitPoints;
-            pBar.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFE8443C");
-            pBar.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFD1D1D1");
-            pBar.Height = 30;
-
-
-            System.Windows.Controls.StackPanel armorClass = createStackPanel("Armor Class", pc.ArmorClass);
-            System.Windows.Controls.StackPanel thb = createStackPanel("To-Hit Bonus", pc.ToHit);
-            System.Windows.Controls.StackPanel avgDmg = createStackPanel("Average Damage", pc.AverageDamage);
-            System.Windows.Controls.StackPanel avgHeal = createStackPanel("Average Healing", pc.AverageHealing);
-            System.Windows.Controls.StackPanel str_sv = createStackPanel("Strenght Save", pc.Saves[0]);
-            System.Windows.Controls.StackPanel dex_sv = createStackPanel("Dexterity Save", pc.Saves[1]);
-            System.Windows.Controls.StackPanel cst_sv = createStackPanel("Constitution Save", pc.Saves[2]);
-            System.Windows.Controls.StackPanel int_sv = createStackPanel("Intelligence Save", pc.Saves[3]);
-            System.Windows.Controls.StackPanel wis_sv = createStackPanel("Wisdom Save", pc.Saves[4]);
-            System.Windows.Controls.StackPanel chr_sv = createStackPanel("Charisma Save", pc.Saves[5]);
-            System.Windows.Controls.StackPanel avd = createStackPanel("Avoidance", pc.Avoidance);
+            System.Windows.Controls.StackPanel hp = createStackPanel("HP", pc.HitPoints, "HP");
+            System.Windows.Controls.StackPanel armorClass = createStackPanel("Armor Class", pc.ArmorClass, "ArmorClass");
+            System.Windows.Controls.StackPanel thb = createStackPanel("To-Hit Bonus", pc.ToHit, "ToHit");
+            System.Windows.Controls.StackPanel avgDmg = createStackPanel("Average Damage", pc.AverageDamage, "AverageDamage");
+            System.Windows.Controls.StackPanel avgHeal = createStackPanel("Average Healing", pc.AverageHealing, "AverageHealing");
+            System.Windows.Controls.StackPanel str_sv = createStackPanel("Strenght Save", pc.Saves[0], "Strenght");
+            System.Windows.Controls.StackPanel dex_sv = createStackPanel("Dexterity Save", pc.Saves[1], "Dexterity");
+            System.Windows.Controls.StackPanel cst_sv = createStackPanel("Constitution Save", pc.Saves[2], "Constitution");
+            System.Windows.Controls.StackPanel int_sv = createStackPanel("Intelligence Save", pc.Saves[3], "Intelligence");
+            System.Windows.Controls.StackPanel wis_sv = createStackPanel("Wisdom Save", pc.Saves[4], "Wisdom");
+            System.Windows.Controls.StackPanel chr_sv = createStackPanel("Charisma Save", pc.Saves[5], "Charisma");
+            System.Windows.Controls.StackPanel avd = createStackPanel("Avoidance", pc.Avoidance, "Avoidance");
 
             playerCard.Children.Add(name);
             playerCard.Children.Add(hp);
-            playerCard.Children.Add(pBar);
             playerCard.Children.Add(armorClass);
             playerCard.Children.Add(thb);
             playerCard.Children.Add(avgDmg);
@@ -106,9 +94,10 @@ namespace Test.Views
 
         }
 
-        private System.Windows.Controls.StackPanel createStackPanel(string content, float value)
+        private System.Windows.Controls.StackPanel createStackPanel(string content, float value, string statName)
         {
             System.Windows.Controls.StackPanel sp = new StackPanel();
+            sp.Name = statName;
             System.Windows.Controls.RadioButton rb = new RadioButton();
             rb.Content = content;
             System.Windows.Controls.TextBox tb = new TextBox();
@@ -128,7 +117,76 @@ namespace Test.Views
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Trace.WriteLine(sender.GetType());
+            TextBox tb = (TextBox)sender;
+            if (!IsDigitsOnly(tb.Text))
+            {
+                MessageBox.Show("Please enter a number");
+                return;
+            }
+            StackPanel stat = (StackPanel)VisualTreeHelper.GetParent((DependencyObject)sender);
+            StackPanel player = (StackPanel)VisualTreeHelper.GetParent((DependencyObject)stat);
+            foreach (Player_Character thisPc in currentParty.Members)
+            {
+                if (player.Name == thisPc.Name)
+                {
+                    setPlayerValue(stat.Name, float.Parse(tb.Text), thisPc);
+                }
+            }
+        }
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
+        private void setPlayerValue(string statName, float value, Player_Character pc)
+        {
+            switch(statName)
+            {
+                case "HP":
+                    pc.HitPoints = (int)value;
+                    break;
+                case "ArmorClass":
+                    pc.ArmorClass = (int)value;
+                    break;
+                case "ToHit":
+                    pc.ToHit = (int)value;
+                    break;
+                case "AverageDamage":
+                    pc.AverageDamage = value;
+                    break;
+                case "AverageHealing":
+                    pc.AverageHealing = value;
+                    break;
+                case "Strenght":
+                    pc.Saves[0] = (int)value;
+                    break;
+                case "Dexterity":
+                    pc.Saves[1] = (int)value;
+                    break;
+                case "Constitution":
+                    pc.Saves[2] = (int)value;
+                    break;
+                case "Intelligence":
+                    pc.Saves[3] = (int)value;
+                    break;
+                case "Wisdom":
+                    pc.Saves[4] = (int)value;
+                    break;
+                case "Charisma":
+                    pc.Saves[5] = (int)value;
+                    break;
+                case "Avoidance":
+                    pc.Avoidance = value;
+                    break;
+
+            }
         }
     }
     
