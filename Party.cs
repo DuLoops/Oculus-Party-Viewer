@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace Test
 {
-    class Party
+    public class Party
     {
         private int PartySize = 1;
 

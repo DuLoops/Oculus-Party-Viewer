@@ -5,7 +5,7 @@ using System.Windows.Documents;
 
 namespace Test
 {
-    enum Stats
+    public enum Stats
     {
         STRENGTH,
         DEXTERITY,
@@ -16,7 +16,7 @@ namespace Test
         NONE
     }
 
-    enum Difficulty
+    public enum Difficulty
     {
         //Make your players feel strong
         EASY,
@@ -28,7 +28,7 @@ namespace Test
         DEADLY
     }
 
-    class Creature
+    public class Creature
     {
         //Array of all the stats in order of the Stats enum
         public List<int> Stats { get; private set; }

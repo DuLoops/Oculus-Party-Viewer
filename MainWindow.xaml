@@ -7,7 +7,7 @@
         xmlns:viewmodels ="clr-namespace:Test.ViewModels"
         xmlns:views ="clr-namespace:Test.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600">
     <Window.Resources>
         <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:mainViewModel}">
             <views:main DataContext="{Binding}"/>
@@ -23,24 +23,24 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock>Welcome</TextBlock>
+        <DockPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock FontSize="50">Welcome</TextBlock>
         </DockPanel>
-        <DockPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Height="110" Width="179">
-                <Button Content="Create a new party" Click="new_party_clicked" Margin="10"/>
-                <Button Content="Select an existing party" Click="main_clicked" Margin="10"/>
+        <DockPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <StackPanel>
+                <Button Content="Create a new party" Click="new_party_clicked" Margin="10" Padding="10" FontSize="30"/>
+                <Button Content="Select an existing party" Click="main_clicked" Margin="10" Padding="10" FontSize="30"/>
             </StackPanel>
         </DockPanel>
 
-        
-        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Content="{Binding}"/>
+
+        <ContentControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="2" Content="{Binding}"/>
     </Grid>
 </Window>

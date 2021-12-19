@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 
 namespace Test.Views
@@ -23,11 +24,28 @@ namespace Test.Views
     public partial class main : UserControl
     {
 
-        Player_Character pc;
+
+        Party currentParty;
 
         public main()
         {
             InitializeComponent();
+        }
+        public main(Party party)
+        {
+            currentParty = party;
+            InitializeComponent();
+            createParty();
+
+        }
+
+        private void createParty()
+        {
+            foreach (Player_Character pc in currentParty.Members)
+            {
+                createPlayerCard(pc);
+
+            }
         }
 
         private void createPlayerCard(Player_Character pc)
@@ -68,6 +86,9 @@ namespace Test.Views
             playerCard.Children.Add(chr_sv);
             playerCard.Children.Add(avd);
             
+            this.mainPlayerPanel.Children.Add(playerCard);
+            Trace.WriteLine("player created");
+
         }
 
         private System.Windows.Controls.StackPanel createStackPanel(string content, float value)

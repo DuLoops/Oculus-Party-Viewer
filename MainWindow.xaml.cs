@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test.ViewModels;
+using Test.Views;
 
 namespace Test
 {
@@ -31,7 +32,9 @@ namespace Test
 
         private void new_party_clicked(object sender, RoutedEventArgs e)
         {
+            
             DataContext = new new_partyViewModel();
+
         }
 
 
@@ -47,7 +50,8 @@ namespace Test
 
             CurrentParty = new Party(PartyFile.FileName);
             CurrentParty.Save();
-            DataContext = new mainViewModel();
+            DataContext = new main(CurrentParty);
+
         }
     }
 }

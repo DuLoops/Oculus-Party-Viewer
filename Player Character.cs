@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace Test
 {
-    class Player_Character : Creature
+    public class Player_Character : Creature
     {
         public int Level { get; private set; }
         public float Avoidance { get; private set; }
