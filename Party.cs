@@ -48,6 +48,8 @@ namespace Test
                     case XmlNodeType.Element:
                         if (PartyReader.Name == "Party")
                         {
+                            PartyReader.MoveToNextAttribute();
+                            name = PartyReader.Value;
                             break;
                         }
                         Player_Character player = new Player_Character(PartyReader);
@@ -159,6 +161,7 @@ namespace Test
                 XmlWriter PartySaver = XmlWriter.Create(SaveDialog.FileName);
                 PartySaver.WriteStartDocument();
                 PartySaver.WriteStartElement("Party");
+                PartySaver.WriteAttributeString("Name", name);
                 foreach (Player_Character player in Members)
                 {
                     player.Save(PartySaver);

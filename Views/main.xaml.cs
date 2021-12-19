@@ -63,7 +63,7 @@ namespace Test.Views
             StackPanel thb = createStackPanel("To-Hit Bonus", pc.ToHit, "ToHit");
             StackPanel avgDmg = createStackPanel("Average Damage", pc.AverageDamage, "AverageDamage");
             StackPanel avgHeal = createStackPanel("Average Healing", pc.AverageHealing, "AverageHealing");
-            StackPanel str_sv = createStackPanel("Strenght Save", pc.Saves[0], "Strenght");
+            StackPanel str_sv = createStackPanel("Strength Save", pc.Saves[0], "Strength");
             StackPanel dex_sv = createStackPanel("Dexterity Save", pc.Saves[1], "Dexterity");
             StackPanel cst_sv = createStackPanel("Constitution Save", pc.Saves[2], "Constitution");
             StackPanel int_sv = createStackPanel("Intelligence Save", pc.Saves[3], "Intelligence");
@@ -163,7 +163,7 @@ namespace Test.Views
                 case "AverageHealing":
                     pc.AverageHealing = value;
                     break;
-                case "Strenght":
+                case "Strength":
                     pc.Saves[0] = (int)value;
                     break;
                 case "Dexterity":
