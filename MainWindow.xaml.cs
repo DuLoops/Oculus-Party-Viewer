@@ -32,9 +32,11 @@ namespace Test
 
         private void new_party_clicked(object sender, RoutedEventArgs e)
         {
-            
-            DataContext = new new_partyViewModel();
 
+            //DataContext = new ViewModels.new_partyViewModel();
+
+            create_party createWindow = new create_party();
+            createWindow.Show();
         }
 
 
