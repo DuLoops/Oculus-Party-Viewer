@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="landing.png" />
     <Resource Include="Views\dragon.jpg" />
   </ItemGroup>

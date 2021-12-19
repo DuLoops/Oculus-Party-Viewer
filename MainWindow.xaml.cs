@@ -15,6 +15,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test.ViewModels;
 using Test.Views;
+using System.Runtime.InteropServices;
+using System.IO;
+using NAudio.Wave;
+
 
 namespace Test
 {
@@ -23,13 +27,28 @@ namespace Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        [DllImport("nAudio.dll", CharSet = CharSet.Auto)]
+        public static extern int start();
+
+
+
         private Party CurrentParty;
+
+        Mp3FileReader reader = new Mp3FileReader("../../../music/A_Drink_Deserved_-_Hayden_McGowan.mp3");
+        WaveOut waveOut = new WaveOut(); // or WaveOutEvent()
+
         public MainWindow()
         {
             InitializeComponent();
+            queueMusic();
             //testing
         }
+        private void queueMusic()
+        {
 
+            waveOut.Init(reader);
+            waveOut.Play();
+        }
         private void new_party_clicked(object sender, RoutedEventArgs e)
         {
 
@@ -51,7 +70,7 @@ namespace Test
             if (PartyFile.ShowDialog() != true) return;
 
             CurrentParty = new Party(PartyFile.FileName);
-            DataContext = new main(CurrentParty);
+            DataContext = new main(CurrentParty, waveOut);
 
         }
     }
