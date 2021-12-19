@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using Microsoft.Win32;
+using Test.Views;
 
 namespace Test.Views
 {
@@ -203,6 +204,13 @@ namespace Test.Views
 
             currentParty = new Party(PartyFinder.FileName);
             createParty();
+        }
+
+        private void raid_Click(object sender, RoutedEventArgs e)
+        {
+            monster monsterWindow = new monster(currentParty);
+            monsterWindow.Show();
+
         }
     }
     

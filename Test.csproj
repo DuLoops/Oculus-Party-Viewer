@@ -6,4 +6,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="landing.png" />
+    <None Remove="Views\dragon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="landing.png" />
+    <Resource Include="Views\dragon.jpg" />
+  </ItemGroup>
+
 </Project>

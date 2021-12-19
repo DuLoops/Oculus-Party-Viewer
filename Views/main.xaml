@@ -12,12 +12,13 @@
             <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
         <DockPanel Background="#264c5e" VerticalAlignment="Top" Name="Toolbar" FlowDirection="LeftToRight" Grid.Row="0" >
-            <Button Content="Save" FontSize="30" Margin="5, 5, 5, 5" BorderBrush="Gray" Padding="5" Click="SaveButton_Click" Width="100" HorizontalAlignment="Left"/>
+            <Button Content="Save" FontSize="30" Margin="10, 5, 5, 5" BorderBrush="Gray" Padding="5" Click="SaveButton_Click" Width="100" HorizontalAlignment="Left"/>
             <Button Content="Parties" FontSize="30" Margin="0, 5, 0, 5" BorderBrush="Gray" Padding="5" Click="Parties_Click" Width="100" HorizontalAlignment="Left"/>
-            <TextBox x:Name="partyName" Text="Party" FontSize="50" Margin="10" BorderBrush="Transparent" Background="Transparent" HorizontalAlignment="Center" FontStyle="Italic" FontFamily="Elephant" Foreground="#e8443c" />
+            <TextBox x:Name="partyName" Text="Party" FontSize="50" BorderBrush="Transparent" Margin="150, 0, 0, 0" Background="Transparent"  FontStyle="Italic" FontFamily="Elephant" Foreground="#e8443c" />
+            <Button Content="Raid" HorizontalAlignment="Right" FontSize="30" Padding="5" Click="raid_Click" Margin="0, 0,20, 0" />
         </DockPanel>
         <StackPanel Name="mainPlayerPanel" Orientation="Horizontal" Margin="10,10,10,10" Grid.Row="1">
-
+    
         </StackPanel>
 
     </Grid>
