@@ -147,7 +147,7 @@ namespace Test
                     }
                 }
             }
-            return DPR;
+            return DPR / 20;
         }
 
         public override string ToString()

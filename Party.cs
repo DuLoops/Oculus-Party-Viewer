@@ -136,6 +136,12 @@ namespace Test
                 total += player.Avoidance * AverageHP;
             }
             EffectiveHitPoints = BaseHitPoints + HealingPerRound - total;
+
+            total = 0;
+            foreach (Player_Character player in Members)
+            {
+                total += player.AverageDamage;
+            }
         }
 
         public override string ToString()

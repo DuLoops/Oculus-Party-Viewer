@@ -86,7 +86,7 @@ namespace Test
         {
             //Make these stats dependent on difficulty enum
             //Out of scope for now
-            ArmorClass = (int) Math.Floor(PlayerParty.AverageToHit * 0.6);
+            ArmorClass = (int) Math.Floor(PlayerParty.AverageToHit * 0.6 + 10);
 
             ToHit = (int) Math.Floor(PlayerParty.AverageArmorClass - 7.0);
 
@@ -105,8 +105,8 @@ namespace Test
 
 
             //This can result in a creature having 1 REALLY good save and 5 average saves, fix this later to have 2 good saves and 4 average saves
-            Saves[Dice.Roll(1, 6)] += (int) Math.Floor(PlayerParty.Level / 3.0);
-            Saves[Dice.Roll(1, 6)] += (int) Math.Floor(PlayerParty.Level / 3.0);
+            Saves[Dice.Roll(1, 6) - 1] += (int) Math.Floor(PlayerParty.Level / 3.0);
+            Saves[Dice.Roll(1, 6) - 1] += (int) Math.Floor(PlayerParty.Level / 3.0);
 
             SaveDC = (int) Math.Round(PlayerParty.AverageSaves[(int)PrimarySave]) + 13;
 
@@ -155,7 +155,7 @@ namespace Test
 
             HitPoints = (int)Math.Ceiling(PlayerParty.DPR() * 6.0);
 
-            AverageHealing = (int)Math.Floor(HitPoints / (2 * 6.0));
+            AverageHealing = (int)Math.Floor(HitPoints / (2 * 6.0) / 5);
         }
 
 
@@ -189,7 +189,7 @@ namespace Test
                     }
                 }
             }
-            return DPR;
+            return DPR / 20;
         }
 
         public float DPR(Creature enemy)
