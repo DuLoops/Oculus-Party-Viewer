@@ -97,7 +97,7 @@ namespace Test
             Saves = new List<int>(6);
             for (int i = 0; i < 6; i++)
             {
-                Saves[i] = (int) Math.Floor(PlayerParty.Level / 3.0) + 1;
+                Saves.Add((int)Math.Floor(PlayerParty.Level / 3.0) + 1);
             }
 
             //Copy saves to stats, to ensure no stat spiking. Allow to be modifiable elsewhere to ensure proper creature design out of combat
