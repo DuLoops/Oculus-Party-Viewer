@@ -8,7 +8,7 @@ namespace Test
     public class Player_Character : Creature
     {
         public int Level { get; private set; }
-        public float Avoidance { get; private set; }
+        public float Avoidance { get; set; }
         public string Name { get; private set; }
 
         public int BaseHitPoints { get; private set; }
