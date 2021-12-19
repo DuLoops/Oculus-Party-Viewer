@@ -34,23 +34,23 @@ namespace Test
         public List<int> Stats { get; private set; }
 
         //Array of all the saves in order of the Stats enum
-        public List<int> Saves { get; private set; }
+        public List<int> Saves { get;  set; }
 
-        public int ToHit { get; protected set; }
+        public int ToHit { get;  set; }
 
         //Average of damage dice, for casters takes average damage of highest, most numerous spell slot.
-        public float AverageDamage { get; protected set; }
+        public float AverageDamage { get; set; }
 
         //Flat damage bonuses
-        public float FlatDamage { get; protected set; }
+        public float FlatDamage { get; set; }
 
         //Healing over 5 rounds
-        public float AverageHealing { get; protected set; }
+        public float AverageHealing { get;  set; }
 
-        public int HitPoints { get; protected set; }
+        public int HitPoints { get; set; }
 
         //Average AC over the course of a fight, ignores 1 round buffs (i.e. Shield)
-        public int ArmorClass { get; protected set; }
+        public int ArmorClass { get; set; }
 
         public bool UsesSaves { get; protected set; }
 
@@ -248,3 +248,4 @@ namespace Test
         }
     }
 }
+
