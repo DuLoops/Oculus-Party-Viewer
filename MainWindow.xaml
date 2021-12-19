@@ -13,8 +13,8 @@
         <DataTemplate x:Name="mainViewTemplate" DataType="{x:Type viewmodels:mainViewModel}">
             <views:main DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="detailViewTemplate" DataType="{x:Type viewmodels:detailViewModel}">
-            <views:detail DataContext="{Binding}"/>
+        <DataTemplate x:Name="monsterViewTemplate" DataType="{x:Type viewmodels:detailViewModel}">
+            <views:monster DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="new_partyViewTemplate" DataType="{x:Type viewmodels:new_partyViewModel}">
             <views:new_party DataContext="{Binding}"/>

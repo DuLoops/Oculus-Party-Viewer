@@ -14,13 +14,24 @@ using System.Windows.Shapes;
 namespace Test.Views
 {
     /// <summary>
-    /// Interaction logic for detail.xaml
+    /// Interaction logic for monster.xaml
     /// </summary>
-    public partial class detail : UserControl
+    public partial class monster : UserControl
     {
-        public detail()
+        public monster()
         {
             InitializeComponent();
+        }
+        public monster(Party Adventurers)
+        {
+            InitializeComponent();
+            Creature Boss = new Creature(Adventurers);
+            DisplayBoss();
+        }
+
+        private void DisplayBoss()
+        {
+
         }
     }
 }

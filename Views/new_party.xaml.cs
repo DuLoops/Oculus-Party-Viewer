@@ -33,7 +33,7 @@ namespace Test.Views
 
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Test.MainWindow();
+            DataContext = new MainWindow();
             System.Diagnostics.Trace.WriteLine("sfhdl");
         }
     }
